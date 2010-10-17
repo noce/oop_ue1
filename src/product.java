@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class product{
 		private String name;
 		private String description;

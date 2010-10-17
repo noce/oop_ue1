@@ -6,13 +6,9 @@ public class configuration{
 	private HashMap<product,Integer> configurationsCheck;
 	private int amount, count = 0;
 	private boolean stock = true;
+	private String name;
 	private product p1;
 	private product p2;
-	
-	private String name;
-	private int size = 0;
-	
-	
 	
 	
 	public configuration(String name){
@@ -20,7 +16,7 @@ public class configuration{
 		configurations = new HashMap<product,Integer>();
 	}
 	
-	public void addProduct (product p, int a){//product p = key, a = amount
+	public void addProduct (product p, int a){
 		configurations.put(p, a);	
 	}
 	
@@ -32,11 +28,12 @@ public class configuration{
 		    for(int a=0; a<amount; a++) this.p1.decreaseStock();  
 		    
 		    if(!p1.inStock()){
-		    	System.out.println("Die Konfiguration " + name + " konnte nicht zusammengestellt werden - fehlende Komponenten");
+		    	System.out.println("Die Konfiguration " + name + " " +
+		    						"konnte nicht zusammengestellt werden - " +
+		    						"fehlende Komponenten" + "\n");
 		    	break;
 		    }
 		}
-
 	}
 
 	private boolean checkConfig(){
@@ -57,7 +54,7 @@ public class configuration{
 	
 	
 	private int countConfig(){
-		configurationsCheck  = (HashMap)configurations.clone();
+		configurationsCheck  = (HashMap<product,Integer>)configurations.clone();
 
 		while(this.checkConfig()) count++;
 		
