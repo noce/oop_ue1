@@ -10,14 +10,14 @@ public class Main{
 		productgroup haushalt = new productgroup("Haushalt");
 		haushalt.addProduct(p1);
 		haushalt.addProduct(p2);
-		//haushalt.addProduct(p1);
-		//System.out.println(haushalt.toString());
+
+		System.out.println(haushalt.toString());
 		
 		configuration c1 = new configuration("Küche");
 		c1.addProduct(p1, 1);
 		c1.addProduct(p2, 5);
 		
-		//c1.buildConfig();
+		c1.buildConfig();
 		System.out.println(c1.toString());
 	}
 }

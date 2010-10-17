@@ -3,11 +3,16 @@ import java.util.*;
 public class configuration{
 	
 	private HashMap<product,Integer> configurations;
+	private HashMap<product,Integer> configurationsCheck;
 	private int amount, count = 0;
 	private boolean stock = true;
-	private product product;
+	private product p1;
+	private product p2;
+	
 	private String name;
 	private int size = 0;
+	
+	
 	
 	
 	public configuration(String name){
@@ -21,13 +26,13 @@ public class configuration{
 	
 	public void buildConfig(){
 			for(product p : configurations.keySet()){
-		    product = p;
+		    p1 = p;
 		    amount = configurations.get(p);		
 		    
-		    for(int a=0; a<amount; a++) this.product.decreaseStock();  
+		    for(int a=0; a<amount; a++) this.p1.decreaseStock();  
 		    
-		    if(!product.inStock()){
-		    	System.out.println("Konfiguration konnte nicht zusammengestellt werden - fehlende Komponenten");
+		    if(!p1.inStock()){
+		    	System.out.println("Die Konfiguration " + name + " konnte nicht zusammengestellt werden - fehlende Komponenten");
 		    	break;
 		    }
 		}
@@ -35,19 +40,16 @@ public class configuration{
 	}
 
 	private boolean checkConfig(){
-		while(configurations.size()<= size){
-			for(product p : configurations.keySet()){
-				    product = p;
-				    amount = configurations.get(p);		
-	
-				    if(p.getStock()<amount){
-				    	System.out.println("CheckConfig -false");
-				    	stock = false;
-				    	break;
-				    }
-				    System.out.println("CheckConfig -true");
-				    size ++;
-			}
+		for(product p : configurationsCheck.keySet()){
+			    p2 = p;
+			    amount = configurationsCheck.get(p);
+
+			    if(p.getStock()<amount){
+			    	stock = false;
+			    	break;
+			    }else{
+			    	for(int a=0; a<amount; a++) this.p2.decreaseStock();  
+			    }
 		}
 		if(stock == false)return false;
 		else return true;
@@ -55,8 +57,10 @@ public class configuration{
 	
 	
 	private int countConfig(){
+		configurationsCheck  = (HashMap)configurations.clone();
+
 		while(this.checkConfig()) count++;
-		System.out.println(count);
+		
 		return count;
 	}
 	
@@ -65,5 +69,4 @@ public class configuration{
 		this.countConfig();
 		return "Die Konfiguration " + name + " kann " + count + " Mal gebaut werden";
 	}
-
 }
