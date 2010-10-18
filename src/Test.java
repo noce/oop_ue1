@@ -29,7 +29,7 @@ public class Test{
 		
 		/*Testfall Konfiguration zu oft gebaut, zu wenig Teile*/
 		c1.buildConfig();
-		System.out.println(haushalt.toString());
+		//System.out.println(haushalt.toString());
 		
 		
 		System.out.println(c1.toString());

@@ -1,3 +1,4 @@
+
 public class Product{
 		private String name;
 		private String description;
@@ -31,8 +32,9 @@ public class Product{
 			if(stock - cnt > 0){
 				stock -= cnt;
 			}else{
-				System.out.println("Only " + stock + " pcs of Produkt " + name + " left. Too little for " + cnt);
-			}			
+				System.out.println(
+						String.format("Nur noch %d Stueck von Produkt %s vorhanden", stock, name));
+			}
 		}
 		
 		public int getStock(){

@@ -1,17 +1,15 @@
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ProductGroup{
 
-	private ArrayList<Product> products;
-	private ArrayList<ProductGroup> productgroup;
-	private String name, out;
-	private Iterator<Product> i;
-	private Iterator<ProductGroup> g;
-	
+	protected Set<Product> products;
+	protected Set<ProductGroup> productgroup = new HashSet<ProductGroup>();
+	private String name;	
 	
 	public ProductGroup(String name){
 		this.name = name;
-		products = new ArrayList<Product>();
+		products = new HashSet<Product>();
 	}
 	
 	public void addProduct(Product product){
@@ -19,7 +17,6 @@ public class ProductGroup{
 	}
 	
 	public void addToGroup(ProductGroup grp){
-		productgroup = new ArrayList<ProductGroup>();
 		productgroup.add(grp);
 	}
 	
@@ -27,19 +24,27 @@ public class ProductGroup{
 		return name;
 	}
 	
-	public String toString(){
-		i = products.iterator();
-
-		if(productgroup!=null){
-			g = productgroup.iterator();
-			while(g.hasNext()){
-				out = "Die Produktgruppe " + name +  " beinhaltet die Produktgruppe "
-					+ g.next().getName() + "\n";
-			}
+	protected Set<Product> getProductsFromTree(Set<Product> acc) {
+		acc.addAll(products);
+//		for (Product p : products) {
+//			acc.add(p);
+//		}
+		for (ProductGroup pg : productgroup) {
+			pg.getProductsFromTree(acc);
 		}
-			out = out + "Die Produktgruppe " + name + " beinhaltet:";
-			while(i.hasNext()) out = out + "\n" + i.next().toString();
-		
-		return out;
+		return acc;
+	}
+	
+	public String toString(){
+		StringBuilder buf = new StringBuilder();
+		Set<Product> pset = getProductsFromTree(new HashSet<Product>());
+		buf.append("Die Produktgruppe ");
+		buf.append(name);
+		buf.append(" beinhaltet:\n");
+		for (Product p : pset) {
+			buf.append(p.toString());
+			buf.append('\n');
+		}
+		return buf.toString();
 	}
 }

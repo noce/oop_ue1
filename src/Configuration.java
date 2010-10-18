@@ -32,6 +32,11 @@ public class Configuration {
 		return countConfig() > 0;
 	}	
 	
+	/* 
+	 * Return the number of configurations that can be built 
+	 * with products in stock
+	 * 
+	 */
 	private int countConfig(){
 		int count = Integer.MAX_VALUE;
 		for(Entry<Product, Integer> entry : configurations.entrySet()){
