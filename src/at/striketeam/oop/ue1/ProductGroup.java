@@ -1,25 +1,26 @@
+package at.striketeam.oop.ue1;
 import java.util.*;
 
-public class productgroup{
+public class ProductGroup{
 
-	private ArrayList<product> products;
-	private ArrayList<productgroup> productgroup;
+	private ArrayList<Product> products;
+	private ArrayList<ProductGroup> productgroup;
 	private String name, out;
-	private Iterator<product> i;
-	private Iterator<productgroup> g;
+	private Iterator<Product> i;
+	private Iterator<ProductGroup> g;
 	
 	
-	public productgroup(String name){
+	public ProductGroup(String name){
 		this.name = name;
-		products = new ArrayList<product>();
+		products = new ArrayList<Product>();
 	}
 	
-	public void addProduct(product product){
+	public void addProduct(Product product){
 		products.add(product);
 	}
 	
-	public void addToGroup(productgroup grp){
-		productgroup = new ArrayList<productgroup>();
+	public void addToGroup(ProductGroup grp){
+		productgroup = new ArrayList<ProductGroup>();
 		productgroup.add(grp);
 	}
 	
