@@ -1,5 +1,3 @@
-package at.striketeam.oop.ue1;
-
 public class Product{
 		private String name;
 		private String description;

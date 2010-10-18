@@ -1,6 +1,4 @@
-package at.striketeam.oop.ue1;
-
-public class Main{
+public class Test{
 	public static void main(String args[]){
 		
 		/* funktioniert. Is aber wahrscheinlich nicht die eleganteste/schönste Lösung

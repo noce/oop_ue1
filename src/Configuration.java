@@ -1,4 +1,3 @@
-package at.striketeam.oop.ue1;
 import java.util.HashMap;
 import java.util.Map.Entry;
 

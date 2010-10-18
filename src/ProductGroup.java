@@ -1,4 +1,3 @@
-package at.striketeam.oop.ue1;
 import java.util.*;
 
 public class ProductGroup{
