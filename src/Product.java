@@ -10,10 +10,10 @@ public class Product{
 			this.description = description;
 		}
 		
-		public Product(String name, String description, int s){
+		public Product(String name, String description, int stock){
 			this.name = name;
 			this.description = description;
-			this.stock = s;
+			this.stock = stock;
 		}
 		
 		public void increaseStock(){
@@ -45,6 +45,9 @@ public class Product{
 			return inStock(1);
 		}
 
+		/*
+		 *returns a boolean that says if a certain number of the product is in stock
+		 */
 		public boolean inStock(int cnt){
 			return stock >= cnt;
 		}

@@ -14,6 +14,10 @@ public class Configuration {
 		configurations.put(p, a);	
 	}
 	
+	/*
+	 * iterates over the products and builds a configuration 
+	 * with the amount required
+	 */
 	public void buildConfig(){
 		if (!checkConfig()) {
 			System.out.println("Die Konfiguration " + name + " " +
@@ -34,8 +38,7 @@ public class Configuration {
 	
 	/* 
 	 * Return the number of configurations that can be built 
-	 * with products in stock
-	 * 
+	 * with the products in stock
 	 */
 	private int countConfig(){
 		int count = Integer.MAX_VALUE;

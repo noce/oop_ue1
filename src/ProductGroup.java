@@ -24,15 +24,18 @@ public class ProductGroup{
 		return name;
 	}
 	
-	protected Set<Product> getProductsFromTree(Set<Product> acc) {
-		acc.addAll(products);
+	/*
+	 * adds all products of the group as well as of the subgroups
+	 */
+	protected Set<Product> getProductsFromTree(Set<Product> prodSet) {
+		prodSet.addAll(products);
 //		for (Product p : products) {
 //			acc.add(p);
 //		}
 		for (ProductGroup pg : productgroup) {
-			pg.getProductsFromTree(acc);
+			pg.getProductsFromTree(prodSet);
 		}
-		return acc;
+		return prodSet;
 	}
 	
 	public String toString(){
